@@ -1,4 +1,4 @@
-export interface Movie {
+export interface Movies {
   page: number;
   results?: (ResultsEntity)[] | null;
   total_pages: number;

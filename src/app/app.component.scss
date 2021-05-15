@@ -40,6 +40,17 @@
     gap: 30px;
   }
 }
+.body {
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+  position: relative;
+  margin-top: 150px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 
 ul {
   list-style: none;
@@ -62,4 +73,6 @@ ul {
       color: #F8F8FF;
     }
   }
+
+
 }
