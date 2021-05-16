@@ -3,15 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Movies } from '../models/movies.model';
+import { Genres } from '../models/genres.model';
 
 const enum endpoint {
-  latest = '/movie/latest',
-  now_playing = '/movie/now_playing',
+  top_rated_tv = '/tv/top_rated',
   popular = '/movie/popular',
-  top_rated = '/movie/top_rated',
-  upcoming = '/movie/upcoming',
+  popular_tv = '/tv/popular',
   trending = '/trending/all/week',
-  originals = '/discover/tv'
+  trending_movie = '/trending/movie/week',
+  trending_tv = '/trending/tv/week',
+  originals = '/discover/tv',
+  genres = '/genre/movie/list'
 }
 
 @Injectable({
@@ -25,19 +27,40 @@ export class MovieService {
 
   //In Angular applications preferred way for event handling or asynchronous programming is by using observables. Observables provide support
   // for data sharing between publishers and subscribers
-  getTrendingMovie(): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.trending}`, {
+
+  getTrending(path: string): Observable<Movies> {
+    const url: any = {
+      '/': endpoint.trending,
+      '/tv-series': endpoint.trending_tv,
+      '/movies': endpoint.trending_movie
+    }
+    return this.http.get<Movies>(`${this.URL}${url[path]}`, {
       params: {
         api_key: this.apiKey
       }
     });
   }
 
-  getPopularMovie(): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.popular}`, {
+  getPopular(path: string): Observable<Movies> {
+    const url: any = {
+      '/': endpoint.popular,
+      '/tv-series': endpoint.popular_tv,
+      '/movies': endpoint.popular
+    }
+    return this.http.get<Movies>(`${this.URL}${url[path]}`, {
       params: {
         api_key: this.apiKey
       }
     });
   }
+
+  getGenres(): Observable<Genres> {
+
+    return this.http.get<Genres>(`${this.URL}${endpoint.genres}`, {
+      params: {
+        api_key: this.apiKey
+      }
+    });
+  }
+
 }

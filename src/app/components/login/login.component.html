@@ -1,0 +1,9 @@
+<div class="form-container">
+  <h2>Login</h2>
+  <form [formGroup]="checkoutForm" (ngSubmit)='onSubmitLogin()' class=login-form>
+    <input type="text" placeholder="Email address"  formControlName="email" class="input-txt" required>
+    <input type="password" placeholder="Password" formControlName="password" name="password" class="input-txt" required>
+    <button type="submit"  [disabled]="!checkoutForm.valid"class="auth-btn">Log in</button>
+  </form>
+  <a routerLink="/signup" routerLinkActive="active" class="create-account-txt">No account? <strong>Create one here</strong></a>
+</div>

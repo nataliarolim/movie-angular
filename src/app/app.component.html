@@ -1,24 +1,2 @@
-<div class="container">
 
-  <div class="header_main">
-    <div class="header_left">
-      <img src=".././assets/netflix.svg" alt="logo"/>
-      <ul>
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Movies</a></li>
-        <li><a href="#">TV Series</a></li>
-        <li><a href="#">Favorites</a></li>
-      </ul>
-    </div>
-    <div class="header_right">
-      <button mat-icon-button color="primary"><mat-icon>search</mat-icon></button>
-      <button mat-icon-button><mat-icon>logout</mat-icon></button>
-
-
-    </div>
-  </div>
-  <div class="body">
-    <app-slider title="Trending" [movies]="trending" [sliderConfig]="sliderConfig"></app-slider>
-    <app-slider title="Popular" [movies]="popular" [sliderConfig]="sliderConfig"></app-slider>
-  </div>
-</div>
+<router-outlet></router-outlet>
