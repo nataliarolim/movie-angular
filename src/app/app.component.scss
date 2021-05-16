@@ -1,17 +1,2 @@
-.container {
-  display: flex;
-  flex-direction: column;
-}
 
-.body {
-  overflow-y: hidden;
-  overflow-x: scroll;
-  padding: 20px;
-  position: relative;
-  margin-top: 150px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
 

@@ -18,6 +18,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { environment } from 'src/environments/environment';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { environment } from 'src/environments/environment';
     HeaderComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -12,11 +12,13 @@
     </ul>
   </div>
   <div class="header_right">
-    <form [formGroup]="searchForm" (ngSubmit)='getSearchResults()' class=login-form>
+    <form [formGroup]="searchForm" (ngSubmit)='getSearchResults()' class=search-form>
       <input type="text" placeholder="Search"  formControlName="search" class="input-txt" required>
-      <button mat-button matPrefix mat-icon-button type="submit" >
-        <mat-icon>search</mat-icon>
+      <span>
+      <button class="search_button" type="submit" >
+        Go
       </button>
+    </span>
     </form>
     <button mat-icon-button (click)="logout()"><mat-icon>logout</mat-icon></button>
   </div>

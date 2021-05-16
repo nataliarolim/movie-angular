@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import { Genres } from 'src/app/models/genres.model';
 import { MovieService } from '../../service/movie.service';
 import { AuthService } from '../../service/auth.service';
@@ -11,8 +11,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  activeState = '';
+export class HeaderComponent implements OnInit{
+  searchForm = this.formBuilder.group({
+    search: ''
+  });
+
+  activeState ='Home';
   states = [
     {id:'Home', route: '/'},
     {id:'Movies', route: '/movies'},
@@ -23,24 +27,20 @@ export class HeaderComponent implements OnInit {
 
   genres: Genres;
   subs: Subscription[] = [];
-  searchForm = this.formBuilder.group({
-    search: ''
-  });
+
 
   constructor(
     private movie: MovieService,
     private authService: AuthService,
     private formBuilder: FormBuilder
 
+
   ) { }
+
 
   ngOnInit(): void {
     this.subs.push(this.movie.getGenres().subscribe((data: Genres) => this.genres = data));
-    this.activeState = 'Home';
-
-  }
-
-  getSearchResults(): void {
+    //this.activeState = 'Home';
 
   }
 
@@ -50,6 +50,11 @@ export class HeaderComponent implements OnInit {
 
   setStateAsActive(state: string) {
     this.activeState = state;
+  }
+
+  getSearchResults(): void {
+    console.log(this.searchForm.value)
+
   }
 
 }

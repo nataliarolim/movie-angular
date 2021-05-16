@@ -1,0 +1,35 @@
+h1 {
+  color: white;
+}
+
+.container_main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container_details {
+  width: 500px;
+  text-align: center;
+  padding: 10px;
+}
+
+p {
+  color: white;
+  font-size: 15px;
+  margin-top:15px;
+}
+
+.add_favorite {
+  background: #dc4666;
+  border: #dc4666;
+}
+
+.remove_favorite {
+  background: #dddddd;
+  border: #dddddd;
+
+}
+

@@ -1,0 +1,14 @@
+<div class="container_main">
+  <div class="container_details">
+    <h1>{{movie_details?.title || tv_details?.name }}
+      <button mat-icon-button  [ngClass]="{'add_favorite' : toggle, 'remove_favorite': !toggle}" (click)="addOrRemoveFavorite()" >
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </h1>
+    <img src="https://image.tmdb.org/t/p/w400{{movie_details?.poster_path || tv_details?.poster_path }}" alt="{{movie_details?.title}}" />
+    <p><strong>OVERVIEW:</strong> {{movie_details?.overview || tv_details?.overview}}}</p>
+    <p><strong>IMDB:</strong> {{movie_details?.vote_average || tv_details?.vote_average }}/10</p>
+    <p><strong>RELEASE DATE:</strong> {{movie_details?.release_date || tv_details?.last_air_date}}</p>
+
+  </div>
+</div>

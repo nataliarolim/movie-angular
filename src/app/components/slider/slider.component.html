@@ -3,9 +3,12 @@
   <div class="movie_images">
     <div class="thumbnails">
       <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="sliderConfig"
-        (afterChange)="afterChange($event)">
-        <div class="slick-item" ngxSlickItem *ngFor="let m of movies?.results">
-          <img src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}" alt="{{m.title}}">
+        (afterChange)="afterChange($event)"
+
+        >
+        <div class="slick-item" ngxSlickItem *ngFor="let movie of movies?.results">
+          <button (click)="goToDetails(movie)"><img src="https://image.tmdb.org/t/p/w200{{movie?.poster_path}}" alt="{{movie.title}}"></button>
+
         </div>
 
       </ngx-slick-carousel>

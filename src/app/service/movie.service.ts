@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Movies } from '../models/movies.model';
 import { Genres } from '../models/genres.model';
+import { MovieDetails } from '../models/movie-details.model';
+import { TVDetails } from '../models/tv-details.model';
 
 const enum endpoint {
   top_rated_tv = '/tv/top_rated',
@@ -28,7 +30,7 @@ export class MovieService {
   //In Angular applications preferred way for event handling or asynchronous programming is by using observables. Observables provide support
   // for data sharing between publishers and subscribers
 
-  getTrending(path: string): Observable<Movies> {
+  getTrending(path: string, page: number): Observable<Movies> {
     const url: any = {
       '/': endpoint.trending,
       '/tv-series': endpoint.trending_tv,
@@ -36,7 +38,8 @@ export class MovieService {
     }
     return this.http.get<Movies>(`${this.URL}${url[path]}`, {
       params: {
-        api_key: this.apiKey
+        api_key: this.apiKey,
+        page: page
       }
     });
   }
@@ -57,6 +60,24 @@ export class MovieService {
   getGenres(): Observable<Genres> {
 
     return this.http.get<Genres>(`${this.URL}${endpoint.genres}`, {
+      params: {
+        api_key: this.apiKey
+      }
+    });
+  }
+
+  getDetailsMovie(id: number): Observable<MovieDetails> {
+
+    return this.http.get<MovieDetails>(`${this.URL}/movie/${id}`, {
+      params: {
+        api_key: this.apiKey
+      }
+    });
+  }
+
+  getDetailsTV(id: number): Observable<TVDetails> {
+
+    return this.http.get<TVDetails>(`${this.URL}/tv/${id}`, {
       params: {
         api_key: this.apiKey
       }

@@ -8,9 +8,26 @@
   overflow-x: scroll;
   padding: 20px;
   position: relative;
-  margin-top: 150px;
+  margin-top: 100px;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+.search_button {
+  height: 30px;
+  border-radius: 0;
+  width: 55px;
+  background: #E50914;
+  border: #E50914;
+}
+
+.search-form {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  input {
+    height: 30px;
+    background-color: #181818;
+    color: white;
   }
 }
