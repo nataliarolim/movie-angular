@@ -6,7 +6,7 @@
 .body {
   overflow-y: hidden;
   overflow-x: scroll;
-  padding: 20px;
+  padding: 10px 20px 10px 20px;
   position: relative;
   margin-top: 100px;
 
@@ -31,3 +31,11 @@
     color: white;
   }
 }
+
+mat-paginator{
+  background: #212121;
+  color: #fff;
+}
+
+
+

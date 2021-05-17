@@ -44,7 +44,7 @@ export class MovieService {
     });
   }
 
-  getPopular(path: string): Observable<Movies> {
+  getPopular(path: string, page: number): Observable<Movies> {
     const url: any = {
       '/': endpoint.popular,
       '/tv-series': endpoint.popular_tv,
@@ -52,7 +52,8 @@ export class MovieService {
     }
     return this.http.get<Movies>(`${this.URL}${url[path]}`, {
       params: {
-        api_key: this.apiKey
+        api_key: this.apiKey,
+        page: page
       }
     });
   }

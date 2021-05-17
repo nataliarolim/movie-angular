@@ -1,0 +1,6 @@
+<div class="container">
+  <div class="body" *ngFor="let favorite of favorites">
+    <img class="img_movie" src="https://image.tmdb.org/t/p/w200/{{favorite?.poster_path}}" alt="{{favorite.title}}">
+    <button class="remove_favorite" (click)="removeFavorite(favorite)">Remove favorite</button>
+  </div>
+</div>

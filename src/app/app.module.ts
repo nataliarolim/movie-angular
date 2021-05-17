@@ -15,10 +15,13 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { environment } from 'src/environments/environment';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     HomeComponent,
     LoginComponent,
     SignupComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +43,13 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
     SlickCarouselModule,
     HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
 
   ],
   providers: [],

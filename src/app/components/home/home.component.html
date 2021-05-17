@@ -1,9 +1,7 @@
 <div class="container">
-  <app-header></app-header>
-
   <div class="body">
-  
     <app-slider title="Trending" [movies]="trending" [trending]="trending"></app-slider>
     <app-slider title="Popular" [movies]="popular"></app-slider>
+    <mat-paginator [length]="400" [pageSize]="40" (page)="changePage($event)"></mat-paginator>
   </div>
 </div>

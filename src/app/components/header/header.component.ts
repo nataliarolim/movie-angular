@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
     this.subs.push(this.movie.getGenres().subscribe((data: Genres) => this.genres = data));
-    //this.activeState = 'Home';
 
   }
 
