@@ -22,13 +22,11 @@ export class FavoritesComponent implements OnInit {
         )
       )
     ).subscribe(data => {
-      this.favorites = data.filter(elem => elem.id_user === current_user.uid);
+      this.favorites = data.filter(elem => elem?.id_user === current_user.uid);
     });
   }
 
   removeFavorite(favorite: any): void{
     this.database.deleteUserFavorite(favorite?.id_favorite)
-
   }
-
 }

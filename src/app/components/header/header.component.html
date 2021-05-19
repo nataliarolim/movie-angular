@@ -1,24 +1,17 @@
 <div class="header_main">
   <div class="header_left">
-    <img src=".././assets/netflix.svg" alt="logo"/>
+    <img src=".././assets/netflix.svg" alt="logo" />
     <ul>
-      <li
-      *ngFor="let s of states"
-      (click)="setStateAsActive(s.id)">
-      <a routerLink={{s.route}} [class.active]="s?.id === activeState">
-        {{ s?.id }}
-      </a>
+      <li *ngFor="let s of states" (click)="setStateAsActive(s.id)">
+        <a routerLink={{s.route}} [class.active]="s?.id === activeState">
+          {{ s?.id }}
+        </a>
 
     </ul>
   </div>
   <div class="header_right">
-    <form [formGroup]="searchForm" (ngSubmit)='getSearchResults()' class=search-form>
-      <input type="text" placeholder="Search"  formControlName="search" class="input-txt" required>
-      <span>
-      <button class="search_button" type="submit" >
-        Go
-      </button>
-    </span>
-    </form>
-    <button mat-icon-button (click)="logout()"><mat-icon>logout</mat-icon></button>
+
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
   </div>

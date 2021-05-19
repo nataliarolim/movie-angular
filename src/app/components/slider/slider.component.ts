@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Movies } from '../../models/movies.model';
-import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 @Component({
@@ -48,8 +47,6 @@ export class SliderComponent implements OnInit {
   @Input() trending: Movies;
   @Input() title: string;
 
-  @ViewChild('slickModal') slickModal: SlickCarouselComponent;
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -58,7 +55,6 @@ export class SliderComponent implements OnInit {
   goToDetails(movie: any) {
     const type = movie.media_type ? movie.media_type : 'movie';
     this.router.navigate([`details/${type}/${movie.id}`]);
-    console.log(movie)
   }
 
 }

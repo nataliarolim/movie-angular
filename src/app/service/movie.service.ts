@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Movies } from '../models/movies.model';
-import { Genres } from '../models/genres.model';
 import { MovieDetails } from '../models/movie-details.model';
 import { TVDetails } from '../models/tv-details.model';
 
@@ -15,7 +14,8 @@ const enum endpoint {
   trending_movie = '/trending/movie/week',
   trending_tv = '/trending/tv/week',
   originals = '/discover/tv',
-  genres = '/genre/movie/list'
+  genres = '/genre/movie/list',
+  search='/search/movie'
 }
 
 @Injectable({
@@ -36,12 +36,7 @@ export class MovieService {
       '/tv-series': endpoint.trending_tv,
       '/movies': endpoint.trending_movie
     }
-    return this.http.get<Movies>(`${this.URL}${url[path]}`, {
-      params: {
-        api_key: this.apiKey,
-        page: page
-      }
-    });
+    return this.http.get<Movies>(`${this.URL}${url[path]}?api_key=${this.apiKey}&page=${page}`);
   }
 
   getPopular(path: string, page: number): Observable<Movies> {
@@ -50,39 +45,18 @@ export class MovieService {
       '/tv-series': endpoint.popular_tv,
       '/movies': endpoint.popular
     }
-    return this.http.get<Movies>(`${this.URL}${url[path]}`, {
-      params: {
-        api_key: this.apiKey,
-        page: page
-      }
-    });
-  }
-
-  getGenres(): Observable<Genres> {
-
-    return this.http.get<Genres>(`${this.URL}${endpoint.genres}`, {
-      params: {
-        api_key: this.apiKey
-      }
-    });
+    return this.http.get<Movies>(`${this.URL}${url[path]}?api_key=${this.apiKey}&page=${page}`);
   }
 
   getDetailsMovie(id: number): Observable<MovieDetails> {
-
-    return this.http.get<MovieDetails>(`${this.URL}/movie/${id}`, {
-      params: {
-        api_key: this.apiKey
-      }
-    });
+    return this.http.get<MovieDetails>(`${this.URL}/movie/${id}?api_key=${this.apiKey}`);
   }
 
   getDetailsTV(id: number): Observable<TVDetails> {
-
-    return this.http.get<TVDetails>(`${this.URL}/tv/${id}`, {
-      params: {
-        api_key: this.apiKey
-      }
-    });
+    return this.http.get<TVDetails>(`${this.URL}/tv/${id}?api_key=${this.apiKey}`);
   }
 
+  searchMovies(searchStr: string, page:number): Observable<any> {
+    return this.http.get(`${this.URL}${endpoint.search}?api_key=${this.apiKey}&query=${searchStr}&page=${page}`);
+  }
 }

@@ -6,10 +6,8 @@
 }
 
 .body {
-  // overflow-y: hidden;
-  // overflow-x: scroll;
   padding: 10px;
-  //position: relative;
+  position: relative;
 
   &::-webkit-scrollbar {
     display: none;
@@ -17,10 +15,12 @@
 }
 
 .img_movie {
-  //position:relative;
+  display: inline-block;
 }
 
 .remove_favorite {
-  // position: absolute;
-  // left: 35px;
+  position: absolute;
+  top: auto;
+  bottom: 16px;
+  left: 6px;
 }

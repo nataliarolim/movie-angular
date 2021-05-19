@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
-import { NgForm } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -20,8 +19,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem('currentUser')) {
       this.router.navigate(['/']);
-
     }
+    sessionStorage.removeItem('favorites');
   }
 
   onSubmitLogin(): void {

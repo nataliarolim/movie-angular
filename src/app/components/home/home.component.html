@@ -1,7 +1,25 @@
 <div class="container">
+
   <div class="body">
-    <app-slider title="Trending" [movies]="trending" [trending]="trending"></app-slider>
-    <app-slider title="Popular" [movies]="popular"></app-slider>
+    <form [formGroup]="searchForm" (ngSubmit)='getSearchResults()' class=search-form>
+      <input type="text" placeholder="Search" formControlName="search" class="input-txt" required>
+      <span>
+        <button class="search_button" type="submit">
+          Go
+        </button>
+      </span>
+    </form>
+
+    <div *ngIf="searchMovies" class="container_search">
+      <div *ngFor="let search of searchMovies">
+        <button (click)="goToDetails(search)"><img src="https://image.tmdb.org/t/p/w200{{search?.poster_path}}" alt="{{search.title}}"></button>
+      </div>
+    </div>
+
+    <div *ngIf="!searchMovies">
+      <app-slider title="Trending" [movies]="trending" [trending]="trending"></app-slider>
+      <app-slider title="Popular" [movies]="popular"></app-slider>
+    </div>
     <mat-paginator [length]="400" [pageSize]="40" (page)="changePage($event)"></mat-paginator>
   </div>
 </div>

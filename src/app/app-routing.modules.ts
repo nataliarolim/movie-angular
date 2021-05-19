@@ -17,7 +17,6 @@ const routes: Routes = [
   { path: 'details/:type/:id', component: MovieDetailsComponent, canActivate: [AuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
-
 ];
 
 @NgModule({
